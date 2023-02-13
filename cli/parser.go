@@ -24,8 +24,8 @@ func GetParser(opts *Options) *cobra.Command {
                 os.Exit(1)
             }
 
-            if strings.ToLower(opts.arch) != "windows" {
-                fmt.Printf("[!] CRT can only work with Windows")
+            if strings.ToLower(opts.OS) != "windows" {
+                fmt.Printf("[!] CRT can only work with Windows\n")
                 os.Exit(1)
             }
 
@@ -56,8 +56,7 @@ func GetParser(opts *Options) *cobra.Command {
                 os.Exit(1)
             }
 
-            // TODO: call to LoadBasicTemplate(*s)
-            toCompile := loader.LoadCRTTemplate(*s)
+            toCompile := loader.LoadBasicTemplate(*s)
             err = loader.WriteToTempfile(toCompile)
             if err != nil {
                 fmt.Printf("Write error: %s\n", err.Error())
