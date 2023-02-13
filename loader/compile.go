@@ -7,7 +7,19 @@ import (
 )
 
 func Compile(sc Shellcode) {
-	err := exec.Command(
+    fmt.Println("[+] Disabling telemetry")
+    err := exec.Command(
+		"go",
+        "env",
+        "-w",
+        "GOTELEMETRY=off",
+        ).Run()
+	if err != nil {
+		println("[!] go env error: " + err.Error())
+		os.Exit(1)
+	}
+
+	err = exec.Command(
 		"go",
 		"build",
 		"-ldflags",
