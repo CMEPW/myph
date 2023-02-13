@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func LoadWindowsTemplate(s Shellcode) string {
+func LoadCRTTemplate(s Shellcode) string {
 
 	hexShellcode := ToString(s.Payload)
 	hexKey := ToString(s.AesKey)
